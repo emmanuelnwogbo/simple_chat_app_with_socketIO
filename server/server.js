@@ -22,6 +22,13 @@ io.on('connection', (socket) => {
     createdAT : 123
   });
 
+  socket.emit('newMessage', {
+    from: 'jerry',
+    age: 12,
+    text: 'see you then',
+    createdAt: 123
+  });
+
   socket.on('createMessage', (message) => {
     console.log('message: ', message);
   });
