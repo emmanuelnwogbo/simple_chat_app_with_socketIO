@@ -16,6 +16,20 @@ io.on('connection', (socket) => {
   console.log('new user connected');
   //console.log(socket);
 
+  socket.emit('newEmail', {
+    from: 'mike',
+    text: `what's up!`,
+    createdAT : 123
+  });
+
+  socket.on('createMessage', (message) => {
+    console.log('message: ', message);
+  });
+
+  socket.on('createEmail', (newEmail) => {
+    console.log('createEmail', newEmail);
+  });
+
   socket.on('disconnect', () => {
     console.log('User was disconnected');
   });
