@@ -31,14 +31,14 @@ io.on('connection', (socket) => {
 
   socket.on('createMessage', (messg) => {
     console.log('message: ', messg);
-      io.emit('newMessage', {
+/*      io.emit('newMessage', {
         from: messg.from,
         text: messg.text,
         createdAT: new Date().getTime()
-      });
+      });*/
       socket.broadcast.emit('newMessage', {
-        from: message.from,
-        text: message.text,
+        from: messg.from,
+        text: messg.text,
         createdAT: new Date().getTime()
       });
   });

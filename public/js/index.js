@@ -23,6 +23,6 @@ socket.on('newEmail', function(email) {
   console.log('New email', email);
 });
 
-socket.on('newMessage', function(messg) {
-  console.log('newMessage', messg);
+socket.on('newMessage', function(message) {
+  console.log(message);
 });
