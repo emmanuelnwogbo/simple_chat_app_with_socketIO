@@ -31,6 +31,9 @@ io.on('connection', (socket) => {
 
   socket.on('createMessage', (message) => {
     console.log('message: ', message);
+    io.emit('newMessage', {
+      message: message.message
+    });
   });
 
   socket.on('createEmail', (newEmail) => {
