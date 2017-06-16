@@ -21,11 +21,11 @@ io.on('connection', (socket) => {
 
   socket.broadcast.emit('newMessage', generateMessage('Admin', 'New User Joined'));
 
-  socket.on('createMessage', (message) => {
+  socket.on('createMessage', (message, callback) => {
     console.log('message: ', message);
 
-    //io.emit('newMessage', generateMessage(message.from, message.text));
-
+    io.emit('newMessage', generateMessage(message.from, message.text));
+    callback('This is from the server');
 
 /*    socket.broadcast.emit('newMessage', {
         from: message.from,
@@ -33,10 +33,6 @@ io.on('connection', (socket) => {
         createdAT: new Date().getTime()
       });*/
   });
-
-/*  socket.on('createEmail', (newEmail) => {
-    console.log('createEmail', newEmail);
-  });*/
 
   socket.on('disconnect', () => {
     console.log('User was disconnected');
