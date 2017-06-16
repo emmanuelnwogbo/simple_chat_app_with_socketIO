@@ -29,11 +29,18 @@ io.on('connection', (socket) => {
     createdAt: 123
   });
 
-  socket.on('createMessage', (message) => {
-    console.log('message: ', message);
-    io.emit('newMessage', {
-      message: message.message
-    });
+  socket.on('createMessage', (messg) => {
+    console.log('message: ', messg);
+      io.emit('newMessage', {
+        from: messg.from,
+        text: messg.text,
+        createdAT: new Date().getTime()
+      });
+      socket.broadcast.emit('newMessage', {
+        from: message.from,
+        text: message.text,
+        createdAT: new Date().getTime()
+      });
   });
 
   socket.on('createEmail', (newEmail) => {

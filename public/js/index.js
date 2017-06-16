@@ -10,7 +10,8 @@ socket.on('connect', function() {
   });
 
   socket.emit('createMessage', {
-    message: 'hello from here'
+    from: 'emmanuel',
+    text: 'yuh this is a test'
   });
 });
 
@@ -22,6 +23,6 @@ socket.on('newEmail', function(email) {
   console.log('New email', email);
 });
 
-socket.on('newMessage', function(message) {
-  console.log('newMessage', message);
+socket.on('newMessage', function(messg) {
+  console.log('newMessage', messg);
 });
