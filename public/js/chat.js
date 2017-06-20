@@ -21,8 +21,15 @@ socket.on('connect', function() {
 
   socket.emit('join', params, function (err) {
     if (err) {
-      alert(err);
-      window.location.href = '/';
+      //alert(err);
+      swal(
+        'Oops...',
+        err,
+        'error'
+      );
+      setTimeout(function() {
+        window.location.href = '/';
+      }, 1000);
     }
     else {
       console.log('no error');
